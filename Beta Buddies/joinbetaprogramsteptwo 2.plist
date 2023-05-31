@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OnDemand</key>
+	<true/>
+	<key>_metadata</key>
+	<dict>
+		<key>created_by</key>
+		<string>aanklewicz</string>
+		<key>creation_date</key>
+		<date>2014-12-04T16:30:39Z</date>
+		<key>munki_version</key>
+		<string>2.0.1.2253</string>
+		<key>os_version</key>
+		<string>10.7.0</string>
+	</dict>
+	<key>autoremove</key>
+	<false/>
+	<key>catalogs</key>
+	<array>
+		<string>Phase0</string>
+		<string>Phase1</string>
+		<string>Phase2</string>
+		<string>Phase3</string>
+		<string>Production</string>
+	</array>
+	<key>category</key>
+	<string>Internal Tools</string>
+	<key>description</key>
+	<string>Click on this link to begin the enrollment process.
+
+You will be taken to your System Settings page and follow instructions pinned in #betathumbs channel in Slack.</string>
+	<key>developer</key>
+	<string>Thumbtack</string>
+	<key>display_name</key>
+	<string>Enroll In BetaThumbs for macOS</string>
+	<key>icon_name</key>
+	<string>joinbetaprogram.png</string>
+	<key>installer_type</key>
+	<string>nopkg</string>
+	<key>minimum_os_version</key>
+	<string>10.4.0</string>
+	<key>name</key>
+	<string>joinbetaprogramsteptwo</string>
+	<key>postinstall_script</key>
+	<string>#!/bin/zsh
+
+open "x-apple.systempreferences:com.apple.Software-Update-Settings.extension?action=showBetaUpdates"</string>
+	<key>requires</key>
+	<array>
+		<string>joinbetaprogram</string>
+	</array>
+	<key>uninstallable</key>
+	<false/>
+	<key>version</key>
+	<string>1.0</string>
+</dict>
+</plist>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OnDemand</key>
+	<false/>
+	<key>_metadata</key>
+	<dict>
+		<key>created_by</key>
+		<string>aanklewicz</string>
+		<key>creation_date</key>
+		<date>2014-12-04T16:30:39Z</date>
+		<key>munki_version</key>
+		<string>2.0.1.2253</string>
+		<key>os_version</key>
+		<string>10.7.0</string>
+	</dict>
+	<key>autoremove</key>
+	<false/>
+	<key>catalogs</key>
+	<array>
+		<string>Phase0</string>
+		<string>Phase1</string>
+		<string>Phase2</string>
+		<string>Phase3</string>
+		<string>Production</string>
+	</array>
+	<key>category</key>
+	<string>Internal Tools</string>
+	<key>description</key>
+	<string>Join Thumbtack's beta program. Get the latest software immediately.
+
+If you haven’t already done so, once installed sign up with &lt;a href="https://link.to.google.form"&gt;this Google Form&lt;/a&gt;. </string>
+	<key>developer</key>
+	<string>Thumbtack</string>
+	<key>display_name</key>
+	<string>Enroll In BetaThumbs</string>
+	<key>installcheck_script</key>
+	<string>#!/bin/zsh
+
+# This script was created by Adam Anklewicz at Thumbtack on Thursday February 16, 2023
+# Will check to see if the computer is enrolled in the beta program.
+# For the Internal Tools' Endpoint Team
+# Version 1.0 - 2023-02-16
+# Version 1.1 - 2023-05-09 Remove any seedutil dependencies
+
+current=$(date +"%Y-%m-%d %H:%M:%S %z")
+
+if [ -f /Library/Preferences/com.thumbtack.betaprogram.plist ]; then
+	currentState=$(/usr/bin/defaults read /Library/Preferences/com.thumbtack.betaprogram Program)
+	if [ $currentState = "CustomerSeed" ]; then
+		echo "Device is enrolled in CustomerSeed."
+		echo "Device was enrolled on" $(/usr/bin/defaults read /Library/Preferences/com.thumbtack.betaprogram DateAdded)
+		exit 1
+	elif [ $currentState = "Production" ]; then
+		echo "Device is enrolled in Production"
+		echo "Device was enrolled on" $(/usr/bin/defaults read /Library/Preferences/com.thumbtack.betaprogram DateAdded)
+		exit 0
+	fi
+else
+	/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram Program "Production"
+	/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram DateAdded -date "$current"
+	echo "Device is enrolled in Production."
+	exit 0
+fi</string>
+	<key>installer_type</key>
+	<string>nopkg</string>
+	<key>minimum_os_version</key>
+	<string>10.4.0</string>
+	<key>name</key>
+	<string>joinbetaprogram</string>
+	<key>postinstall_script</key>
+	<string>#!/bin/zsh
+
+# This script was created by Adam Anklewicz at Thumbtack on Wendesday February 15, 2023
+# This script will create a file and store the computer's status in the beta program.
+# For the Internal Tools' Endpoint Team
+# Version 1.0 - 2023-02-15
+
+current=$(date +"%Y-%m-%d %H:%M:%S %z")
+
+/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram Program "CustomerSeed"
+/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram DateAdded -date "$current"
+
+/usr/local/bin/jamf recon</string>
+	<key>unattended_install</key>
+	<false/>
+	<key>unattended_uninstall</key>
+	<false/>
+	<key>uninstall_method</key>
+	<string>uninstall_script</string>
+	<key>uninstall_script</key>
+	<string>#!/bin/zsh
+
+# This script was created by Adam Anklewicz at Thumbtack on Wendesday February 15, 2023
+# This script will set the device back to the default behaviour...
+# Set com.thumbtack.betaprogram to "Production"
+# For the Internal Tools' Endpoint Team
+# Version 1.0 - 2023-02-15
+
+current=$(date +"%Y-%m-%d %H:%M:%S %z")
+
+/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram Program "Production"
+/usr/bin/defaults write /Library/Preferences/com.thumbtack.betaprogram DateAdded -date "$current"
+
+/usr/local/bin/jamf recon</string>
+	<key>uninstallable</key>
+	<true/>
+	<key>version</key>
+	<string>1.0</string>
+</dict>
+</plist>

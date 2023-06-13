@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Check the current seed, and only display the line containing "Currently"
+# Check the current seed, based on what's recorded at com.thumbtack.betaprogram
 
 currentState=$(/usr/bin/defaults read /Library/Preferences/com.thumbtack.betaprogram Program)
 

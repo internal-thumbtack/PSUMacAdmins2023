@@ -24,5 +24,7 @@ Tuesday: Bringing a Mac Admin Mindset to Managing Windows Endpoints
 [Update rings for Windows 10 and later policy in Intune](https://learn.microsoft.com/en-us/mem/intune/protect/windows-10-update-rings)  
 [Use Okta MFA for Azure Active Directory](https://help.okta.com/oie/en-us/Content/Topics/Apps/Office365/Use_Okta_MFA_Azure_AD_MFA.htm#Auto)  
 [How to set up SSO for Microsoft Office 365 with Okta](https://www.vulongtran.com/set-up-sso-for-office-365-with-okta)  
+[Advanced Installer](https://www.advancedinstaller.com/)
+[WiX Toolset Tutorial](https://www.firegiant.com/wix/tutorial/)
 
 This repo holds supporting documents from Rebecca Latimer (rlatimer@thumbtack.com) and Adam Anklewicz (aanklewicz@thumbtack.com)'s presentations at Penn State's Mac Admins Conference for 2023

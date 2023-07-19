@@ -17,6 +17,7 @@ Tuesday: Bringing a Mac Admin Mindset to Managing Windows Endpoints
 [Add a Registry Key to Windows 11 Using Intune](https://www.ntweekly.com/2023/03/12/add-a-registry-key-to-windows-11-using-intune/)  
 [Understanding Windows Registry](https://resources.infosecinstitute.com/topic/understanding-windows-registry/)  
 [Improve Your Windows 11 Experience With these 8 Registry Hacks](https://geekflare.com/windows-11-registry-tweak/)  
+[What's a Universal Windows Platform (UWP) app?](https://learn.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide) 
 [MSIX Packaging Tool](https://learn.microsoft.com/en-us/windows/msix/packaging-tool/tool-overview)  
 [MSIX Introduction: A comprehensive 24-chapter guide](https://www.advancedinstaller.com/msix-introduction.html)  
 [Windows Autopilot licensing requirements](https://learn.microsoft.com/en-us/mem/autopilot/licensing-requirements)  

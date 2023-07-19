@@ -2,7 +2,9 @@
 
 Tuesday: Bringing a Mac Admin Mindset to Managing Windows Endpoints  
 [Google Slides](https://docs.google.com/presentation/d/1nOaOh0lWfInD2mGLG-SJBrSXq6AUwl8oYMHzh3Mjc0w/edit?usp=sharing)  
-[Feedback Link](https://docs.google.com/forms/d/e/1FAIpQLSdaW89yvzr7bVfydsqZvhjNDi6eklMMA87z3FfIyQm5J2vIUQ/viewform)
+[Feedback Link](https://docs.google.com/forms/d/e/1FAIpQLSdaW89yvzr7bVfydsqZvhjNDi6eklMMA87z3FfIyQm5J2vIUQ/viewform)  
+
+[Notes from session](https://docs.google.com/document/d/1QGBDYpA_OHh1YSnxvcfuA1G_LrYK6NQjGwtjXm3lz6Q/edit)  
 
 [Excel for Windows vs Excel for macOS reddit thread](https://www.reddit.com/r/Excel4Mac/comments/10lo81o/things_missing_from_mac_version_of_excel_2021_vs/)  
 [Excel for Windows vs Excel for macOS spreadsheeto.com](https://spreadsheeto.com/mac-vs-windows/)  

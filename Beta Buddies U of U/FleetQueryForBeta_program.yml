@@ -1,0 +1,12 @@
+- name: Beta Program
+  description: Are the users enrolled in Beta Thumbs?
+  query: |
+    SELECT value AS "Program", 
+    (SELECT username FROM users WHERE directory LIKE '/Users/%' ORDER BY uid LIMIT 1) AS primary_user
+    FROM plist 
+    WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+      AND key = 'Program'
+  platform: darwin
+  interval: 7200 # runs hourly
+  observer_can_run: true
+  automations_enabled: true

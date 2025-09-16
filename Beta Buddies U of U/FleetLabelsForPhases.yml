@@ -1,0 +1,114 @@
+
+- name: BetaThumbs
+  description: Devices enrolled in CustomerSeed via Munki
+  query: |
+    SELECT 1 FROM plist
+    WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+      AND value = 'CustomerSeed';
+  label_membership_type: dynamic
+  platform: darwin
+- name: Phase 1
+  description: Macs with a random number from 0 to 100
+  query: |
+    SELECT 1
+    WHERE EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.randomnumber.plist'
+          AND key = (
+            strftime('%Y','now') || '_Q' ||
+            (CASE
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 1 AND 3 THEN '1'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 4 AND 6 THEN '2'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 7 AND 9 THEN '3'
+                ELSE '4'
+            END)
+          )
+          AND CAST(value AS integer) BETWEEN 0 AND 100
+    )
+    AND EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+          AND value = 'Production'
+    );
+  label_membership_type: dynamic
+  platform: darwin
+- name: Phase 2
+  description: Macs with a random number from 101 to 300
+  query: |
+    SELECT 1
+    WHERE EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.randomnumber.plist'
+          AND key = (
+            strftime('%Y','now') || '_Q' ||
+            (CASE
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 1 AND 3 THEN '1'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 4 AND 6 THEN '2'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 7 AND 9 THEN '3'
+                ELSE '4'
+            END)
+          )
+          AND CAST(value AS integer) BETWEEN 101 AND 300
+    )
+    AND EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+          AND value = 'Production'
+    );
+  label_membership_type: dynamic
+  platform: darwin
+- name: Phase 3
+  description: Macs with a random number from 301 to 600
+  query: |
+    SELECT 1
+    WHERE EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.randomnumber.plist'
+          AND key = (
+            strftime('%Y','now') || '_Q' ||
+            (CASE
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 1 AND 3 THEN '1'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 4 AND 6 THEN '2'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 7 AND 9 THEN '3'
+                ELSE '4'
+            END)
+          )
+          AND CAST(value AS integer) BETWEEN 301 AND 600
+    )
+    AND EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+          AND value = 'Production'
+    );
+  label_membership_type: dynamic
+  platform: darwin
+- name: Phase Production
+  description: Macs with a random number from 601 to 1000
+  query: |
+    SELECT 1
+    WHERE EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.randomnumber.plist'
+          AND key = (
+            strftime('%Y','now') || '_Q' ||
+            (CASE
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 1 AND 3 THEN '1'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 4 AND 6 THEN '2'
+                WHEN CAST(strftime('%m','now') AS integer) BETWEEN 7 AND 9 THEN '3'
+                ELSE '4'
+            END)
+          )
+          AND CAST(value AS integer) BETWEEN 601 AND 1000
+    )
+    AND EXISTS (
+        SELECT 1 FROM plist
+        WHERE path = '/Library/Preferences/com.thumbtack.betaprogram.plist'
+          AND value = 'Production'
+    );
+  label_membership_type: dynamic
+  platform: darwin
+- name: Phase Unknown
+  description: Devices with no phase
+  query:  SELECT 1 WHERE NOT EXISTS (SELECT * FROM file WHERE path='/Library/Preferences/com.thumbtack.randomnumber.plist');
+  label_membership_type: dynamic
+  platform: darwin
